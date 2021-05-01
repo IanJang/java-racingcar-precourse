@@ -31,4 +31,10 @@ public class CarNameTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageMatching("이름의 길이는 1~5자만 가능합니다.");
     }
+
+    @Test
+    void equals() {
+        assertThat(new CarName("tico").equals(new CarName("tico"))).isTrue();
+        assertThat(new CarName("tico").equals(new CarName("audi"))).isFalse();
+    }
 }

@@ -23,4 +23,10 @@ public class CarTest {
         Car car = new Car("audi");
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    void equals() {
+        assertThat(new Car("tico").equals(new Car("tico"))).isTrue();
+        assertThat(new Car("tico").equals(new Car("audi"))).isFalse();
+    }
 }

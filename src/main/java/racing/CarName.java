@@ -18,4 +18,16 @@ public class CarName {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        CarName carName = (CarName) obj;
+        return this.name.equals(carName.name);
+    }
 }
