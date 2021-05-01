@@ -26,4 +26,10 @@ public class RacingGame {
 			playTurn(i, diceNumber);
 		}
 	}
+
+	public void playMultipleRounds(int count) {
+		for (int i = 0; i < count; i++) {
+			playRound();
+		}
+	}
 }

@@ -36,4 +36,17 @@ public class RacingGameTest {
 				.isLessThanOrEqualTo(1);
 		}
 	}
+
+	@Test
+	void playMultipleRounds() {
+		Cars cars = new Cars("pobi,crong,honux");
+		List<Car> carList = cars.getCarList();
+		RacingGame game = new RacingGame(cars);
+		game.playMultipleRounds(5);
+		for (Car car : carList) {
+			assertThat(car.getPosition())
+				.isGreaterThanOrEqualTo(0)
+				.isLessThanOrEqualTo(5);
+		}
+	}
 }
