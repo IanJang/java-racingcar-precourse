@@ -23,4 +23,17 @@ public class RacingGameTest {
 		game.playTurn(0, 9);
 		assertThat(pobi.getPosition()).isEqualTo(2);
 	}
+
+	@Test
+	void playRound() {
+		Cars cars = new Cars("pobi,crong,honux");
+		List<Car> carList = cars.getCarList();
+		RacingGame game = new RacingGame(cars);
+		game.playRound();
+		for (Car car : carList) {
+			assertThat(car.getPosition())
+				.isGreaterThanOrEqualTo(0)
+				.isLessThanOrEqualTo(1);
+		}
+	}
 }
