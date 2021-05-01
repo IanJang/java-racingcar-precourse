@@ -9,6 +9,12 @@ public class CarTest {
     @Test
     void car() {
         Car car = new Car("pobi");
-        assertThat(car.getName()).isEqualTo("pobi");
+        assertThat(car).isInstanceOf(Car.class);
+    }
+
+    @Test
+    void getName() {
+        Car car = new Car("tico");
+        assertThat(car.getName()).isEqualTo("tico");
     }
 }
