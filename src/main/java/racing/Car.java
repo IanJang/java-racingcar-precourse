@@ -3,7 +3,7 @@ package racing;
 public class Car {
 
     private final CarName carName;
-    private final int position;
+    private int position;
 
     public Car(String name) {
         this.carName = new CarName(name);
@@ -29,5 +29,9 @@ public class Car {
         Car car = (Car) obj;
         return this.carName.equals(car.carName)
             && this.position == car.position;
+    }
+
+    public void moveForward() {
+        this.position++;
     }
 }
