@@ -1,13 +1,14 @@
 package racing;
 
 public class Car {
-    private String name;
+
+    private final CarName carName;
 
     public Car(String name) {
-        this.name = name;
+        this.carName = new CarName(name);
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 }
