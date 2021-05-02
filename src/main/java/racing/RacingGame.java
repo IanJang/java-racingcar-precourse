@@ -11,9 +11,7 @@ public class RacingGame {
 	private final RacingGamePrintable printer;
 
 	public RacingGame(Cars cars) {
-		this.cars = cars;
-		this.dice = new RacingGameDice();
-		this.printer = new RacingGameStandardPrinter();
+		this(cars, new RacingGameStandardPrinter());
 	}
 
 	public RacingGame(Cars cars, RacingGamePrintable printer) {
