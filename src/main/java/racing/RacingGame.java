@@ -51,4 +51,27 @@ public class RacingGame {
 		}
 		return positionMap.get(maxPosition);
 	}
+
+	public void printCar(Car car) {
+		StringBuilder positionString = new StringBuilder();
+		for (int i = 0; i < car.getPosition(); i++) {
+			positionString.append("_");
+		}
+		System.out.printf("%s : %s%n", car.getName(), positionString);
+	}
+
+	public void printResult() {
+		for (Car car : cars.getCarList()) {
+			printCar(car);
+		}
+		System.out.println();
+	}
+
+	public void printWinners() {
+		List<String> winnerNames = new ArrayList<>();
+		for (Car car : getWinners()) {
+			winnerNames.add(car.getName());
+		}
+		System.out.printf("%s가 최종 우승했습니다.%n", String.join(", ", winnerNames));
+	}
 }
