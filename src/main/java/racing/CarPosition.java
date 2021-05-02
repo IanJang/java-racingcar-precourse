@@ -27,7 +27,7 @@ public class CarPosition {
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-		CarPosition carPosition = (CarPosition) obj;
+		CarPosition carPosition = (CarPosition)obj;
 		return this.position == carPosition.position;
 	}
 }
