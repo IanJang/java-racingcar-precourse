@@ -72,4 +72,32 @@ public class RacingGameTest {
 		assertThat(carList.get(1)).isEqualTo(crong);
 		assertThat(carList.get(2)).isEqualTo(honux);
 	}
+
+	@Test
+	void getWinners_OneWinner() {
+		Car crong = carList.get(1);
+		crong.moveForward();
+
+		assertThat(game.getWinners()).containsExactly(crong);
+	}
+
+	@Test
+	void getWinners_twoWinners() {
+		Car crong = carList.get(1);
+		Car honux = carList.get(2);
+		crong.moveForward();
+		honux.moveForward();
+
+		assertThat(game.getWinners())
+			.hasSize(2)
+			.containsOnlyOnce(crong)
+			.containsOnlyOnce(honux);
+	}
+
+	@Test
+	void getWinners_threeWinners() {
+		assertThat(game.getWinners())
+			.hasSize(3)
+			.containsAll(carList);
+	}
 }

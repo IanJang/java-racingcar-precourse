@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RacingGame {
@@ -35,5 +37,18 @@ public class RacingGame {
 
 	public List<Car> sortedCarList() {
 		return cars.sortedCarList();
+	}
+
+	public List<Car> getWinners() {
+		int maxPosition = sortedCarList().get(0).getPosition();
+		HashMap<Integer, List<Car>> positionMap = new HashMap<>();
+		for (Car car : cars.getCarList()) {
+			int position = car.getPosition();
+			List<Car> carList = positionMap.get(position);
+			carList = carList != null ? carList : new ArrayList<>();
+			carList.add(car);
+			positionMap.put(car.getPosition(), carList);
+		}
+		return positionMap.get(maxPosition);
 	}
 }
