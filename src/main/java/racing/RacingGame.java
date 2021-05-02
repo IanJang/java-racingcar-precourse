@@ -6,15 +6,20 @@ import java.util.List;
 
 public class RacingGame {
 	private static final int MIN_DICE_NUMBER_TO_MOVE = 4;
-	private static final String CAR_NAME_SEPARATOR = ",";
-	private static final String PRINT_CAR_MESSAGE_TEMPLATE = "%s : %s%n";
-	private static final String PRINT_WINNERS_MESSAGE_TEMPLATE = "%s가 최종 우승했습니다.%n";
 	private final RacingGameDice dice;
 	private final Cars cars;
+	private final RacingGamePrintable printer;
 
 	public RacingGame(Cars cars) {
 		this.cars = cars;
 		this.dice = new RacingGameDice();
+		this.printer = new RacingGameStandardPrinter();
+	}
+
+	public RacingGame(Cars cars, RacingGamePrintable printer) {
+		this.cars = cars;
+		this.dice = new RacingGameDice();
+		this.printer = printer;
 	}
 
 	public void playTurn(int carIndex, int diceNumber) {
@@ -55,26 +60,11 @@ public class RacingGame {
 		return positionMap.get(maxPosition);
 	}
 
-	public void printCar(Car car) {
-		StringBuilder positionString = new StringBuilder();
-		for (int i = 0; i < car.getPosition(); i++) {
-			positionString.append("_");
-		}
-		System.out.printf(PRINT_CAR_MESSAGE_TEMPLATE, car.getName(), positionString);
-	}
-
 	public void printResult() {
-		for (Car car : cars.getCarList()) {
-			printCar(car);
-		}
-		System.out.println();
+		printer.printResult(cars.getCarList());
 	}
 
 	public void printWinners() {
-		List<String> winnerNames = new ArrayList<>();
-		for (Car car : getWinners()) {
-			winnerNames.add(car.getName());
-		}
-		System.out.printf(PRINT_WINNERS_MESSAGE_TEMPLATE, String.join(CAR_NAME_SEPARATOR, winnerNames));
+		printer.printWinners(getWinners());
 	}
 }

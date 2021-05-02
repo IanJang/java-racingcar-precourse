@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import racing.Cars;
 import racing.RacingGame;
+import racing.RacingGameStandardPrinter;
 
 public class Main {
 	public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -15,7 +16,8 @@ public class Main {
 
 		System.out.println(CAR_NAME_INPUT_MESSAGE);
 		String carNamesString = sc.next();
-		RacingGame game = new RacingGame(new Cars(carNamesString));
+
+		RacingGame game = new RacingGame(new Cars(carNamesString), new RacingGameStandardPrinter());
 
 		System.out.println(ROUND_COUNT_INPUT_MESSAGE);
 		int roundCount = sc.nextInt();
