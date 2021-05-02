@@ -6,6 +6,9 @@ import java.util.List;
 
 public class RacingGame {
 	private static final int MIN_DICE_NUMBER_TO_MOVE = 4;
+	private static final String CAR_NAME_SEPARATOR = ",";
+	private static final String PRINT_CAR_MESSAGE_TEMPLATE = "%s : %s%n";
+	private static final String PRINT_WINNERS_MESSAGE_TEMPLATE = "%s가 최종 우승했습니다.%n";
 	private final RacingGameDice dice;
 	private final Cars cars;
 
@@ -57,7 +60,7 @@ public class RacingGame {
 		for (int i = 0; i < car.getPosition(); i++) {
 			positionString.append("_");
 		}
-		System.out.printf("%s : %s%n", car.getName(), positionString);
+		System.out.printf(PRINT_CAR_MESSAGE_TEMPLATE, car.getName(), positionString);
 	}
 
 	public void printResult() {
@@ -72,6 +75,6 @@ public class RacingGame {
 		for (Car car : getWinners()) {
 			winnerNames.add(car.getName());
 		}
-		System.out.printf("%s가 최종 우승했습니다.%n", String.join(", ", winnerNames));
+		System.out.printf(PRINT_WINNERS_MESSAGE_TEMPLATE, String.join(CAR_NAME_SEPARATOR, winnerNames));
 	}
 }

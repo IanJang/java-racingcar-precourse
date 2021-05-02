@@ -5,11 +5,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
+	private static final String CAR_NAME_SEPARATOR = ",";
 	private final List<Car> carList;
 
 	public Cars(String carNamesString) {
 		carList = new ArrayList<>();
-		String[] carNames = carNamesString.split(",");
+
+		String[] carNames = carNamesString.split(CAR_NAME_SEPARATOR);
 		for (String carName : carNames) {
 			Car car = new Car(carName);
 			carList.add(car);
