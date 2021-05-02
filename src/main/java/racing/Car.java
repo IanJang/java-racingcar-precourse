@@ -9,6 +9,11 @@ public class Car {
 		this.carPosition = new CarPosition(0);
 	}
 
+	public Car(String name, int position) {
+		this.carName = new CarName(name);
+		this.carPosition = new CarPosition(position);
+	}
+
 	public String getName() {
 		return carName.getName();
 	}

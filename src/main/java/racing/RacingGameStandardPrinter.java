@@ -35,6 +35,13 @@ public class RacingGameStandardPrinter implements RacingGamePrintable {
 	}
 
 	@Override
+	public void printResult(RacingGameResult result) {
+		for (Cars cars : result.getGameResult()) {
+			printCars(cars);
+		}
+	}
+
+	@Override
 	public void printEmptyLine() {
 		System.out.println();
 	}

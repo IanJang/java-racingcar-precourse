@@ -16,17 +16,14 @@ public class Main {
 
 		System.out.println(CAR_NAME_INPUT_MESSAGE);
 		String carNamesString = sc.next();
-
 		RacingGame game = new RacingGame(new Cars(carNamesString), new RacingGameStandardPrinter());
 
 		System.out.println(ROUND_COUNT_INPUT_MESSAGE);
 		int roundCount = sc.nextInt();
+		game.playMultipleRounds(roundCount);
 
 		System.out.println(PLAY_RESULT_OUTPUT_MESSAGE);
-		for (int i = 0; i < roundCount; i++) {
-			game.playRound();
-			game.printCars();
-		}
+		game.printResult();
 		game.printWinners();
 	}
 }

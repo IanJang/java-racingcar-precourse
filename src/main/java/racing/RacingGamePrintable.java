@@ -10,5 +10,7 @@ public interface RacingGamePrintable {
 
 	void printWinners(List<Car> winners);
 
+	void printResult(RacingGameResult result);
+
 	void printEmptyLine();
 }

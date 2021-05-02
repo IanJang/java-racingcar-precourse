@@ -9,6 +9,7 @@ public class RacingGame {
 	private final RacingGameDice dice;
 	private final Cars cars;
 	private final RacingGamePrintable printer;
+	private final RacingGameResult result;
 
 	public RacingGame(Cars cars) {
 		this(cars, new RacingGameStandardPrinter());
@@ -18,6 +19,7 @@ public class RacingGame {
 		this.cars = cars;
 		this.dice = new RacingGameDice();
 		this.printer = printer;
+		this.result = new RacingGameResult();
 	}
 
 	public void playTurn(int carIndex, int diceNumber) {
@@ -33,6 +35,7 @@ public class RacingGame {
 			int diceNumber = dice.roll();
 			playTurn(i, diceNumber);
 		}
+		report();
 	}
 
 	public void playMultipleRounds(int count) {
@@ -58,11 +61,21 @@ public class RacingGame {
 		return positionMap.get(maxPosition);
 	}
 
-	public void printCars() {
-		printer.printCars(cars);
-	}
-
 	public void printWinners() {
 		printer.printWinners(getWinners());
+	}
+
+	public void printResult() {
+		printer.printResult(result);
+	}
+
+	private void report() {
+		// Deep Copy
+		List<Car> carList = new ArrayList<>();
+		for (Car car : cars.getCarList()) {
+			carList.add(new Car(car.getName(), car.getPosition()));
+		}
+		Cars cars = new Cars(carList);
+		result.report(cars);
 	}
 }
