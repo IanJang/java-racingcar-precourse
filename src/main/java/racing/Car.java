@@ -3,11 +3,11 @@ package racing;
 public class Car {
 
     private final CarName carName;
-    private int position;
+    private final CarPosition carPosition;
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.position = 0;
+        this.carPosition = new CarPosition(0);
     }
 
     public String getName() {
@@ -15,8 +15,9 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return carPosition.getPosition();
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -28,10 +29,10 @@ public class Car {
         }
         Car car = (Car) obj;
         return this.carName.equals(car.carName)
-            && this.position == car.position;
+            && this.carPosition.equals(car.carPosition);
     }
 
     public void moveForward() {
-        this.position++;
+        this.carPosition.increasePosition();
     }
 }
