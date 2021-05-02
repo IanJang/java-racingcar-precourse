@@ -51,4 +51,25 @@ public class RacingGameTest {
 				.isLessThanOrEqualTo(5);
 		}
 	}
+
+	@Test
+	void sortedCarList() {
+		Car pobi = carList.get(0);
+		Car crong = carList.get(1);
+		Car honux = carList.get(2);
+
+		crong.moveForward();
+		crong.moveForward();
+		honux.moveForward();
+
+		List<Car> sortedCarList = game.sortedCarList();
+		assertThat(sortedCarList.get(0)).isEqualTo(crong);
+		assertThat(sortedCarList.get(1)).isEqualTo(honux);
+		assertThat(sortedCarList.get(2)).isEqualTo(pobi);
+
+		// sortedCarList 호출 후에도 기존 CarList의 순서는 유지
+		assertThat(carList.get(0)).isEqualTo(pobi);
+		assertThat(carList.get(1)).isEqualTo(crong);
+		assertThat(carList.get(2)).isEqualTo(honux);
+	}
 }

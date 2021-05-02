@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -17,5 +18,11 @@ public class Cars {
 
 	public List<Car> getCarList() {
 		return carList;
+	}
+
+	public List<Car> sortedCarList() {
+		List<Car> sortedCarList = new ArrayList<>(carList);
+		sortedCarList.sort(Comparator.comparingInt(Car::getPosition).reversed());
+		return sortedCarList;
 	}
 }

@@ -32,4 +32,8 @@ public class RacingGame {
 			playRound();
 		}
 	}
+
+	public List<Car> sortedCarList() {
+		return cars.sortedCarList();
+	}
 }
