@@ -58,8 +58,8 @@ public class RacingGame {
 		return positionMap.get(maxPosition);
 	}
 
-	public void printResult() {
-		printer.printResult(cars.getCarList());
+	public void printCars() {
+		printer.printCars(cars);
 	}
 
 	public void printWinners() {

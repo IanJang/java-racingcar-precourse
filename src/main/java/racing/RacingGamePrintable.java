@@ -6,7 +6,7 @@ public interface RacingGamePrintable {
 
 	void printCar(Car car);
 
-	void printResult(List<Car> carList);
+	void printCars(Cars cars);
 
 	void printWinners(List<Car> winners);
 

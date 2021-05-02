@@ -18,8 +18,8 @@ public class RacingGameStandardPrinter implements RacingGamePrintable {
 	}
 
 	@Override
-	public void printResult(List<Car> carList) {
-		for (Car car : carList) {
+	public void printCars(Cars cars) {
+		for (Car car : cars.getCarList()) {
 			printCar(car);
 		}
 		printEmptyLine();

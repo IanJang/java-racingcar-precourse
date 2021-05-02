@@ -25,7 +25,7 @@ public class Main {
 		System.out.println(PLAY_RESULT_OUTPUT_MESSAGE);
 		for (int i = 0; i < roundCount; i++) {
 			game.playRound();
-			game.printResult();
+			game.printCars();
 		}
 		game.printWinners();
 	}
