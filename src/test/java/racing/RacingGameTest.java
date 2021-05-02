@@ -4,16 +4,24 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RacingGameTest {
+	private Cars cars;
+	private List<Car> carList;
+	private RacingGame game;
+
+	@BeforeEach
+	void setUp() {
+		cars = new Cars("pobi,crong,honux");
+		carList = cars.getCarList();
+		game = new RacingGame(cars);
+	}
 
 	@Test
 	void playTurn() {
-		Cars cars = new Cars("pobi,crong,honux");
-		List<Car> carList = cars.getCarList();
 		Car pobi = carList.get(0);
-		RacingGame game = new RacingGame(cars);
 		game.playTurn(0, 0);
 		assertThat(pobi.getPosition()).isEqualTo(0);
 		game.playTurn(0, 3);
@@ -26,9 +34,6 @@ public class RacingGameTest {
 
 	@Test
 	void playRound() {
-		Cars cars = new Cars("pobi,crong,honux");
-		List<Car> carList = cars.getCarList();
-		RacingGame game = new RacingGame(cars);
 		game.playRound();
 		for (Car car : carList) {
 			assertThat(car.getPosition())
@@ -39,9 +44,6 @@ public class RacingGameTest {
 
 	@Test
 	void playMultipleRounds() {
-		Cars cars = new Cars("pobi,crong,honux");
-		List<Car> carList = cars.getCarList();
-		RacingGame game = new RacingGame(cars);
 		game.playMultipleRounds(5);
 		for (Car car : carList) {
 			assertThat(car.getPosition())
